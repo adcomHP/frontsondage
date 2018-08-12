@@ -1,0 +1,186 @@
+<p-growl [value]="messages" sticky="sticky"></p-growl>
+<div fxLayout="row" fxLayoutAlign="center start" class="gene-registration-form  height-full pad-t-xl">
+    <div fxLayout="column" fxFlex.xl="50" fxFlex.lg="50" fxFlex.md="60" fxFlex.sm="70" fxFlex.xs="100">
+        <mat-card>
+            <div>
+                <div fxLayout="column" fxLayoutAlign="center center">
+
+                    <div class="login-logo text-center">
+                        <img src="assets/img/l4.png">
+                        <h5 class="">Please Enter your details for registrations</h5>
+                    </div>
+                </div>
+                <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" enctype="multipart/form-data">
+                    <div fxLayout="column" fxLayoutAlign="start stretch">
+
+                        <div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="space-between center">
+
+                            <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+
+                                <mat-input-container class="full-wid">
+                                    <input matInput placeholder="Name" [formControl]="form.controls['nom']">
+                                </mat-input-container>
+                                <small class="gene-block"
+                                       *ngIf="form.controls['nom'].hasError('required') && form.controls['nom'].touched"
+                                       class="mat-text-warn">You must include a first name.
+                                </small>
+                                <small class="gene-block"
+                                       *ngIf="form.controls['nom'].hasError('maxlength') && form.controls['nom'].touched"
+                                       class="mat-text-warn">Your first name cannot exceed 15 characters.
+                                </small>
+                            </div>
+
+                            <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+
+                                <mat-input-container class="full-wid">
+                                    <input matInput placeholder="LastName" [formControl]="form.controls['prenom']">
+                                </mat-input-container>
+                                <small class="gene-block"
+                                       *ngIf="form.controls['prenom'].hasError('required') && form.controls['prenom'].touched"
+                                       class="mat-text-warn">You must include a Last name.
+                                </small>
+                                <small class="gene-block"
+                                       *ngIf="form.controls['prenom'].hasError('maxlength') && form.controls['prenom'].touched"
+                                       class="mat-text-warn">Your Last name cannot exceed 15 characters.
+                                </small>
+                            </div>
+                        </div>
+
+                        <div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="space-between center">
+                            <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+
+                                <mat-input-container class="full-wid">
+                                    <input matInput placeholder="cin" [formControl]="form.controls['cin']"
+                                           type="number">
+                                </mat-input-container>
+                                <small class="gene-block"
+                                       *ngIf="form.controls['cin'].hasError('required') && form.controls['cin'].touched"
+                                       class="mat-text-warn">You must include a cin
+                                </small>
+                                <small class="gene-block"
+                                       *ngIf="form.controls['cin'].hasError('maxlength') && form.controls['cin'].touched"
+                                       class="mat-text-warn">Your cin max = 8 number .
+                                </small>
+                                <small class="gene-block"
+                                       *ngIf="form.controls['cin'].hasError('minlength') && form.controls['cin'].touched"
+                                       class="mat-text-warn">Your cin max = 8 number .
+                                </small>
+                            </div>
+
+                            <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+
+                                <mat-input-container class="full-wid">
+                                    <input matInput placeholder="email" [formControl]="form.controls['email']"
+                                           type="email">
+                                </mat-input-container>
+                                <small class="gene-block"
+                                       *ngIf="form.controls['email'].hasError('required') && form.controls['email'].touched"
+                                       class="mat-text-warn">You must include en email adress.
+                                </small>
+                                <small class="gene-block"
+                                       *ngIf="form.controls['email'].errors && !(form.controls['email'].hasError('required')) && form.controls['email'].touched"
+                                       class="mat-text-warn">You must include a valid email address..
+                                </small>
+                            </div>
+
+                        </div>
+
+                        <div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="space-between center">
+                            <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+
+                                <mat-input-container class="full-wid">
+                                    <input matInput placeholder="phone number(+216 23 206 993)"
+                                           [formControl]="form.controls['tel']" type="text">
+                                </mat-input-container>
+                                <small class="gene-block"
+                                       *ngIf="form.controls['tel'].hasError('required') && form.controls['tel'].touched"
+                                       class="mat-text-warn">You must include a phone
+                                </small>
+                                <small class="gene-block"
+                                       *ngIf="form.controls['tel'].errors && !(form.controls['tel'].hasError('required')) && form.controls['tel'].touched"
+                                       class="mat-text-warn">You must include a valid phone number.
+                                </small>
+                            </div>
+
+                            <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+
+                                <mat-input-container class="full-wid">
+                                    <input matInput placeholder="birth_date" [formControl]="form.controls['birth_date']"
+                                           type="date">
+                                </mat-input-container>
+                                <small class="gene-block"
+                                       *ngIf="form.controls['birth_date'].hasError('required') && form.controls['birth_date'].touched"
+                                       class="mat-text-warn">You must include a Date.
+                                </small>
+                                <small class="gene-block"
+                                       *ngIf="form.controls['birth_date'].errors && !(form.controls['birth_date'].hasError('required')) && form.controls['birth_date'].touched"
+                                       class="mat-text-warn">You must include a valid date.
+                                </small>
+                            </div>
+
+                        </div>
+
+                        <div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="space-between center">
+                            <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+
+                                <mat-input-container class="full-wid">
+                                    <input matInput placeholder="password" [formControl]="form.controls['password']"
+                                           type="password">
+                                </mat-input-container>
+                                <small class="gene-block"
+                                       *ngIf="form.controls['password'].hasError('required') && form.controls['password'].touched"
+                                       class="mat-text-warn">You must include a paswword
+                                </small>
+                            </div>
+
+                            <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+
+                                <mat-input-container class="full-wid">
+                                    <input matInput placeholder="confirmPassword"
+                                           [formControl]="form.controls['confirmPassword']" type="password">
+                                </mat-input-container>
+                                <small class="gene-block"
+                                       *ngIf="form.controls['confirmPassword'].hasError('required') && form.controls['confirmPassword'].touched"
+                                       class="mat-text-warn">You must include a Confirm pwd
+                                </small>
+                                <small class="gene-block"
+                                       *ngIf="form.controls['confirmPassword'].errors && (form.controls['confirmPassword'].hasError('required'))"
+                                       class="mat-text-warn">Passwords do not match.
+                                </small>
+                            </div>
+
+                        </div>
+
+
+                        <div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="space-between center">
+                            <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                                <label>Gender</label>
+                                <mat-radio-group [formControl]="form.controls['gender']">
+                                    <mat-radio-button value="male">Male</mat-radio-button>
+                                    <mat-radio-button value="female">Female</mat-radio-button>
+                                </mat-radio-group>
+                                <small *ngIf="!form.controls['gender'].valid && form.controls['gender'].touched"
+                                       class="mat-text-warn">
+                                    You must select a gender.
+                                </small>
+                            </div>
+                            <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+
+
+                                   <input  [formControl]="form.controls['imageuser']" type="File" >
+
+                            </div>
+
+                        </div>
+
+                        <button mat-raised-button [disabled]="!form.valid" class="mat-blue-800 mrgn-b-md" type="submit">
+                            CREATE ACCOUNT
+                        </button>
+                        <p>Already have an account? <a [routerLink]="['/loginn']" class="mat-text-primary">Sign in
+                            here</a></p>
+                    </div>
+                </form>
+            </div>
+        </mat-card>
+    </div>
+</div>

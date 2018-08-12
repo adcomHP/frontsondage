@@ -1,0 +1,56 @@
+ onSubmit(value) {
+        const Image = this.User_Image.nativeElement;
+        if (Image.files && Image.files[0]) {
+            this.UserImageFile = Image.files[0];
+        }
+        const ImageFile: File = this.UserImageFile;
+
+        const formData: FormData = new FormData();
+        formData.append('nom', value.nom);
+        formData.append('prenom', value.prenom);
+        formData.append('cin', value.cin);
+        formData.append('email', value.email);
+        formData.append('nom', value.nom);
+        formData.append('phone', value.phone);
+        formData.append('date', value.date);
+        formData.append('gender', value.gender);
+        formData.append('UserImage', ImageFile, ImageFile.name);
+        formData.append('password', value.password);
+        formData.append('confirmPassword', value.confirmPassword);
+        this.userservice.submitData(formData).subscribe(data => {
+            console.log(data)
+        })
+    }
+
+    //*******************************************************//*
+
+
+        @ViewChild('fileInput') fileInput: ElementRef;
+    /*
+        private prepareSave1(): any {
+            let input = new FormData();
+            input.append('nom', this.form.get('nom').value);
+            input.append('prenom', this.form.get('prenom').value);
+            input.append('cin', this.form.get('cin').value);
+            input.append('email', this.form.get('email').value);
+            input.append('tel', this.form.get('tel').value);
+            input.append('birth_date', this.form.get('birth_date').value);
+            input.append('gender', this.form.get('gender').value);
+            input.append('password', this.form.get('password').value);
+            return input;
+
+        }
+
+        private prepareSave2(): any {
+            let input1 = new FormData();
+            input1.append('USER', this.prepareSave1());
+            input1.append('imageuser',this.form.get('imageuser').value);
+        }
+    */
+
+    onFileChange(event) {
+            if (event.target.files.length > 0) {
+                let file = event.target.files[0];
+                this.form.get('imageuser').setValue(file);
+            }
+        }

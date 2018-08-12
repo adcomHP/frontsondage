@@ -1,0 +1,55 @@
+<p-growl [value]="messages" sticky="sticky"></p-growl>
+<div fxLayout="row" fxLayoutAlign="center start" class="height-full pad-t-xl">
+  <div fxLayout="column" fxFlex.xl="30" fxFlex.lg="30" fxFlex.md="60" fxFlex.sm="70"  fxFlex.xs="100">
+    <mat-card class="gene-login-wrapper">
+      <div>
+        <div fxLayout="column" fxLayoutAlign="center center mrgn-b-md">
+          <div class="login-logo justify-content">
+            <img src="assets/img/l4.png">
+
+            <h5>Please enter your user information</h5>
+          </div>
+        </div>
+
+        <form [formGroup]="loginnForm" (ngSubmit)="onSubmit()" #loginForm="ngForm">
+          <div fxLayout="column" fxLayoutAlign="start stretch">
+
+            <mat-input-container class="mrgn-b-md">
+              <input matInput placeholder="E-Mail" type="email" formControlName="email">
+            </mat-input-container>
+            <small class="gene-block"
+                   *ngIf="loginnForm.controls['email'].hasError('required') && loginnForm.controls['email'].touched"
+                   class="mat-text-warn">You must include en email adress.
+            </small>
+            <small class="gene-block"
+                   *ngIf="loginnForm.controls['email'].errors && !(loginnForm.controls['email'].hasError('required')) && loginnForm.controls['email'].touched"
+                   class="mat-text-warn">You must include a valid email address..
+            </small>
+
+            <mat-input-container class="mrgn-b-md">
+              <input matInput placeholder="Password" type="password" formControlName="password">
+            </mat-input-container>
+
+            <small class="gene-block"
+                   *ngIf="loginnForm.controls['password'].hasError('required') && loginnForm.controls['password'].touched"
+                   class="mat-text-warn">You must include a paswword
+            </small>
+
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <div fxLayout="column">  <mat-checkbox class="remember-me">Remember Me</mat-checkbox></div><span fxFlex></span>
+              <div> <a [routerLink]="['/forgot-password']">Forgot Password?</a></div>
+            </div>
+              <button class="mat-green" mat-raised-button [disabled]="loginnForm.invalid" type="submit">SIGN IN</button>
+            <p class="text-center">Don't have an account? <a [routerLink]="['/registerr']" class="mat-text-primary">Click here to create one</a></p>
+          </div>
+        </form>
+      </div>
+    </mat-card>
+  </div>
+</div>
+
+
+
+
+
+
